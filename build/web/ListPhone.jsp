@@ -33,13 +33,13 @@
         <section>
             <%  ArrayList<Phone> lst = new ArrayList<>();
                 lst = (ArrayList<Phone>) request.getAttribute("Phones");
-                for(Phone p : lst){%>`
+                for(Phone p : lst){%>
                 <div class="img">
                     <%= p.getPhoneName() %> <br><img 
                         src="images/<%= p.getImageURL() %>" width="120"> <br>
-                    <%= p.getPrice() %>Đ <br>
-                    <a href="ControllerServlet?action=delete">delete</a> |
-                    <a href="ControllerServlet?action=update">update</a>
+                    <%= p.getPrice() %>D <br>
+                    <a href="ControllerServlet?action=delete&pid=<%= p.getPhoneID() %>">delete</a> |
+                    <a href="ControllerServlet?action=update&pid=<%= p.getPhoneID() %>">update</a>
                 </div>    
             <%}%>
         </section>
