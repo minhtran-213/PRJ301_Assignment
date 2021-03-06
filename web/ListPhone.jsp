@@ -37,7 +37,7 @@
                 <div class="img">
                     <%= p.getPhoneName() %> <br><img 
                         src="images/<%= p.getImageURL() %>" width="120"> <br>
-                    <%= p.getPrice() %>Đ <br>
+                    <%= p.getPrice() %>D <br>
                     <a href="ControllerServlet?action=delete">delete</a> |
                     <a href="ControllerServlet?action=update">update</a>
                 </div>    
