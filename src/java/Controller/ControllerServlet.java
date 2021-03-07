@@ -38,6 +38,9 @@ public class ControllerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String formView = "ListPhone.jsp";
+        
         try (PrintWriter out = response.getWriter()) {
             String username = "";
             String action = request.getParameter("action");
@@ -107,12 +110,19 @@ public class ControllerServlet extends HttpServlet {
                 else if(action.equals("listProduct")){
                     PhoneDAO dao = new PhoneDAO();
                     request.setAttribute("Phones", dao.getAllPhone());
-                    RequestDispatcher rd = request.getRequestDispatcher("ListPhone.jsp");
+                    RequestDispatcher rd = request.getRequestDispatcher(formView);
                     rd.forward(request, response);                 
                 }
                 
                 else if(action.equals("delete")){
+                    PhoneDAO dao = new PhoneDAO();
+                    String id = request.getParameter("pid");
                     
+                    dao.deletePhone(id);
+                    
+                    request.setAttribute("Phones", dao.getAllPhone());
+                    RequestDispatcher rd = request.getRequestDispatcher(formView);
+                    rd.forward(request, response);  
                 }
                 
                 else if(action.equals("update")){
